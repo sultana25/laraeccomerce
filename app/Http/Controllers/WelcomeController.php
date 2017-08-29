@@ -15,6 +15,21 @@ class WelcomeController extends Controller
     {
         return view('frontEnd.home.homeContent');
     }
+    
+     public function category()
+    {
+        return view('frontEnd.category.categoryContent');
+    }
+    
+    public function productDetails()
+    {
+        return view('frontEnd.product.productContent');
+    }
+    
+    public function contact()
+    {
+        return view('frontEnd.contact.contactContent');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -81,4 +96,6 @@ class WelcomeController extends Controller
     {
         //
     }
+    
+   
 }
