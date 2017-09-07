@@ -19,3 +19,5 @@ Route::get('/contact','WelcomeController@contact');
 Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
+
+Route::get('/category/add','CategoryController@createCategory');
