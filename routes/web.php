@@ -33,7 +33,7 @@ Route::get('/category/delete/{id}','CategoryController@deleteCategory');
 
 Route::get('/manufacturer/add','ManufacturerController@createManufacturer');
 Route::post('/manufacturer/save','ManufacturerController@storeManufacturer');
-Route::get('/manufacturercategory/manage','ManufacturerController@manageManufacturer');
+Route::get('/manufacturer/manage','ManufacturerController@manageManufacturer');
 Route::get('/manufacturer/edit/{id}','ManufacturerController@editManufacturer');
 Route::post('/manufacturer/update','ManufacturerController@updateManufacturer');
 Route::get('/manufacturer/delete/{id}','ManufacturerController@deleteManufacturer');

@@ -15,7 +15,7 @@
                             <a href="{{url('/dashboard')}}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Category<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Category info<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="{{url('/category/add')}}">Add category</a>
@@ -27,13 +27,13 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Manufacturer<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Manufacturer info<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{url('/manufacturer/add')}}">Add category</a>
+                                    <a href="{{url('/manufacturer/add')}}">Add Manufacturer</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('/manufacturer/manage')}}">Manage category</a>
+                                    <a href="{{url('/manufacturer/manage')}}">Manage Manufacturer</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

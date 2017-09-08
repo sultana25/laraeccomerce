@@ -36,7 +36,7 @@ class CategoryController extends Controller
             'publicationStatus'=>$request->publicationStatus,
             
         ]);
-        return redirect()->back()->with('message','Category info save successfully');
+        return redirect('/category/manage')->with('message','Category info save successfully');
     }
     
     public function manageCategory()
