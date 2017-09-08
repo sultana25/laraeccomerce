@@ -4,15 +4,16 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="text-center text-success">{{Session::get('message')}}</h3>
-    <hr/>
+        
+        <hr/>
 <div class="well">
 <!--    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">-->
-    {!!Form::open(['url'=>'/category/save', 'method'=>'POST', 'class'=>'form-horizontal'])!!}
+    {!!Form::open(['url'=>'/category/update', 'method'=>'POST', 'class'=>'form-horizontal','name'=>'editCategoryForm'])!!}
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Category Name</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" name="categoryName">
+                <input type="text" class="form-control" name="categoryName" value="{{$categoryById->name}}">
+                <input type="hidden" class="form-control" name="categoryId" value="{{$categoryById->id}}"}}>
                 <span class="text-danger">{{$errors->has('categoryName')?$errors->first('categoryName'):''}}</span>
             </div>
         </div>
@@ -20,7 +21,7 @@
         <div class="form-group">
             <label for="inputPassword3" class="col-sm-2 control-label">Category Description</label>
             <div class="col-sm-10">
-                <textarea class="form-control" name="categoryDescription" rows="8"></textarea>
+                <textarea class="form-control" name="categoryDescription" rows="8">{{$categoryById->description}}</textarea>
                 <span class="text-danger">{{$errors->has('categoryDescription')?$errors->first('categoryDescription'):''}}</span>
             </div>
         </div>
@@ -47,4 +48,7 @@
 
 
      {!!Form::close()!!}
+<script>
+    document.forms['editCategoryForm'].elements['publicationStatus'].value={{$categoryById->publicationStatus}}
+</script>
 @endsection

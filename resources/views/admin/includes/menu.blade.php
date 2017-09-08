@@ -21,7 +21,19 @@
                                     <a href="{{url('/category/add')}}">Add category</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Manage category</a>
+                                    <a href="{{url('/category/manage')}}">Manage category</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Manufacturer<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{url('/manufacturer/add')}}">Add category</a>
+                                </li>
+                                <li>
+                                    <a href="{{url('/manufacturer/manage')}}">Manage category</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
