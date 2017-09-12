@@ -23,7 +23,7 @@ class ManufacturerController extends Controller
         ]);
         
         DB::table('manufacturers')->insert([
-            'name'=>$request->manufacturerName,
+            'manufacturerName'=>$request->manufacturerName,
             'description'=>$request->manufacturerDescription,
             'publicationStatus'=>$request->publicationStatus,
         ]);
@@ -49,7 +49,7 @@ class ManufacturerController extends Controller
             'publicationStatus'=>'required'
         ]);
          $manufacturers=Manufacturer::findOrFail($request->manufacturerId);
-         $manufacturers->name=$request->manufacturerName;
+         $manufacturers->manufacturerName=$request->manufacturerName;
          $manufacturers->description=$request->manufacturerDescription;
          $manufacturers->publicationStatus=$request->publicationStatus;
          $manufacturers->save();

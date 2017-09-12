@@ -23,7 +23,7 @@
           @foreach($manufacturers as $manufacturer)
           <tr>
             <td scope="row">{{$manufacturer->id}}</td>
-            <td>{{$manufacturer->name}}</td>
+            <td>{{$manufacturer->manufacturerName}}</td>
             <td>{{$manufacturer->description}}</td>
             <td>{{$manufacturer->publicationStatus== 1 ? 'published' : 'unpublished'}}</td>
             <td>

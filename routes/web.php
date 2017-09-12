@@ -43,6 +43,7 @@ Route::get('/manufacturer/delete/{id}','ManufacturerController@deleteManufacture
 Route::get('/product/add','ProductController@createProduct');
 Route::post('/product/save','ProductController@storeProduct');
 Route::get('/product/manage','ProductController@manageProduct');
+Route::get('/product/view/{id}','ProductController@viewProduct');
 Route::get('/product/edit/{id}','ProductController@editProduct');
 Route::post('/product/update','ProductController@updateProduct');
 Route::get('/product/delete/{id}','ProductController@deleteProduct');

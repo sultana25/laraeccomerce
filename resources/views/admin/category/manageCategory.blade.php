@@ -23,7 +23,7 @@
           @foreach($categories as $category)
           <tr>
             <td scope="row">{{$category->id}}</td>
-            <td>{{$category->name}}</td>
+            <td>{{$category->categoryName}}</td>
             <td>{{$category->description}}</td>
             <td>{{$category->publicationStatus== 1 ? 'published' : 'unpublished'}}</td>
             <td>

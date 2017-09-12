@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Manufacturer;
 use App\Product;
+use DB;
 
 
 class ProductController extends Controller
@@ -37,21 +38,42 @@ class ProductController extends Controller
         
     }
         
-        protected function saveProductInfo($request,$imageUrl)
-        {
-            $product=new Product();
-            $product->name=$request->productName;
-            $product->categoryId=$request->categoryId;
-            $product->manufacturerId=$request->manufacturerId;
-            $product->productPrice=$request->productPrice;
-            $product->productQuantity=$request->productQuantity;
-            $product->productShortDescription=$request->productShortDescription;
-            $product->productLongDescription=$request->productLongDescription;
-            $product->productImage=$imageUrl;
-            $product->publicationStatus=$request->publicationStatus;
-            $product->save();
-        }
+    protected function saveProductInfo($request,$imageUrl)
+    {
+        $product=new Product();
+        $product->productName=$request->productName;
+        $product->categoryId=$request->categoryId;
+        $product->manufacturerId=$request->manufacturerId;
+        $product->productPrice=$request->productPrice;
+        $product->productQuantity=$request->productQuantity;
+        $product->productShortDescription=$request->productShortDescription;
+        $product->productLongDescription=$request->productLongDescription;
+        $product->productImage=$imageUrl;
+        $product->publicationStatus=$request->publicationStatus;
+        $product->save();
+    }
         
+    public function manageProduct()
+    {
+        $products=DB::table('products')
+            ->join('categories','products.categoryId','=','categories.id')
+            ->join('manufacturers','products.manufacturerId','=','manufacturers.id')
+            ->select('products.id','productName','products.productPrice','products.productQuantity','products.publicationStatus','categories.categoryName','manufacturers.manufacturerName')
+            ->get();
+        return view('admin.product.manageProduct',compact('products'));
+    }
+    
+    public function viewProduct($id)
+    {
+        $productById=DB::table('products')
+            ->join('categories','products.categoryId','=','categories.id')
+            ->join('manufacturers','products.manufacturerId','=','manufacturers.id')
+            ->select('products.*','categories.categoryName','manufacturers.manufacturerName')
+            ->where('products.id','=',$id)
+            ->first();
+        return view('admin.product.viewProduct',compact('productById'));
+        
+    }
         
         
     

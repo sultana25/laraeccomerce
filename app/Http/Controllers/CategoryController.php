@@ -31,8 +31,8 @@ class CategoryController extends Controller
 //        return "category save successfully";
         
         DB::table('categories')->insert([
-            'name'=>$request->categoryName,
-            'description'=>$request->categoryName,
+            'categoryName'=>$request->categoryName,
+            'description'=>$request->categoryDescription,
             'publicationStatus'=>$request->publicationStatus,
             
         ]);
@@ -60,7 +60,7 @@ class CategoryController extends Controller
             'categoryDescription'=>'required'
         ]);
         $category=Category::find($request->categoryId);
-        $category->name=$request->categoryName;
+        $category->categoryName=$request->categoryName;
         $category->description=$request->categoryDescription;
         $category->publicationStatus=$request->publicationStatus;
         $category->save();
