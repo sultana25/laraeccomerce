@@ -51,4 +51,11 @@ Route::get('/product/view/{id}','ProductController@viewProduct');
 Route::get('/product/edit/{id}','ProductController@editProduct');
 Route::post('/product/update','ProductController@updateProduct');
 Route::get('/product/delete/{id}','ProductController@deleteProduct'); 
+
+//user info
+Route::get('/user/manage','UserController@manageUser');
+    
+    
 });
+
+
