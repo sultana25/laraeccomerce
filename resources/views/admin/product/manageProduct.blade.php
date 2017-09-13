@@ -35,7 +35,7 @@
                 <a href="{{url('/product/view/'.$product->id)}}" class="btn btn-info">
                     <span class="glyphicon glyphicon-eye-open"></span>
                 </a>
-                <a href="{{url('/product/view/'.$product->id)}}" class="btn btn-success">
+                <a href="{{url('/product/edit/'.$product->id)}}" class="btn btn-success">
                     <span class="glyphicon glyphicon-edit"></span>
                 </a>
                 <a href="{{url('/product/delete/'.$product->id)}}" class="btn btn-danger" onclick="return confirm('Are you sure?')">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class WelcomeController extends Controller
 {
@@ -13,12 +14,14 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return view('frontEnd.home.homeContent');
+        $publishedProducts=Product::where('publicationStatus',1)->get();
+        return view('frontEnd.home.homeContent',compact('publishedProducts'));
     }
     
-     public function category()
+     public function category($id)
     {
-        return view('frontEnd.category.categoryContent');
+         $publishedCategoryProducts=Product::where('categoryId',$id)->where('publicationStatus',1)->get();
+        return view('frontEnd.category.categoryContent',compact('publishedCategoryProducts'));
     }
     
     public function productDetails()

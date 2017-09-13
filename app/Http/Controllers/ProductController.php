@@ -30,7 +30,7 @@ class ProductController extends Controller
         
         $name=$productImage->getClientOriginalName();
         
-        $uploadPath='public/Images/';
+        $uploadPath='Images/';
         $productImage->move($uploadPath,$name);
         $imageUrl=$uploadPath.$name;
         $this->saveProductInfo($request,$imageUrl);
@@ -75,6 +75,110 @@ class ProductController extends Controller
         
     }
         
-        
+   public function editProduct($id)
+   {
+        $categories=Category::where('publicationStatus',1)->get();
+        $manufacturers=Manufacturer::where('publicationStatus',1)->get();
+        $productById=Product::where('id',$id)->first();
+        return view('admin.product.editProduct',compact('productById','categories','manufacturers'));
+   }
+   public function updateProduct(Request $request)
+   {    
+       $imageUrl=$this->imageExistStatus($request);
+       
+       
+       return redirect('product/manage')->with('message','Product update successfully');
+       
+   }
+   protected function imageExistStatus($request)
+   {
+       
+       $productById=Product::where('id',$request->productId)->first();
+       
+       $productImage=$request->file('productImage');
+       if($productImage)
+       {
+            unlink($productById->productImage);
+            $name=$productImage->getClientOriginalName();
+            $uploadPath='Images/';
+            $productImage->move($uploadPath,$name);
+            $imageUrl=$uploadPath.$name; 
+       }
+       else
+       {
+            $imageUrl=$productById->productImage;
+
+       }
+       return $imageUrl; 
+        $productById->productName=$request->productName;
+        $productById->categoryId=$request->categoryId;
+        $productById->manufacturerId=$request->manufacturerId;
+        $productById->productPrice=$request->productPrice;
+        $productById->productQuantity=$request->productQuantity;
+        $productById->productShortDescription=$request->productShortDescription;
+        $productById->productLongDescription=$request->productLongDescription;
+        $productById->productImage=$imageUrl;
+        $productById->publicationStatus=$request->publicationStatus;
+        $productById->save();
+       
+       
+       
+   }
     
+
+   public function deleteProduct($id)
+   {
+       $product=Product::findOrFail($id)->first();
+       
+        unlink($product->productImage);
+        $product->delete();
+       
+       return redirect('/product/manage')->with('message','Product delete successfully');
+   }
+   
+   
+//    public function updateProduct(Request $request)
+//   {    
+//       $imageUrl=$this->imageExistStatus($request);
+//       $this->updateProductInfo($request,$imageUrl);
+//       
+//       return redirect('product/manage')->with('message','Product update successfully');
+//       
+//   }
+//   private function imageExistStatus($request)
+//   {
+//       $productById=Product::where('id',$request->productId)->first();
+//       $productImage=$request->file('productImage');
+//       if($productImage)
+//       {
+//            unlink($productById->productImage);
+//            $name=$productImage->getClientOriginalName();
+//            $uploadPath='public/Images/';
+//            $productImage->move($uploadPath,$name);
+//            $imageUrl=$uploadPath.$name; 
+//       }
+//       else
+//       {
+//            $imageUrl=$productById->productImage;
+//
+//       }
+//       return $imageUrl; 
+//   }
+//
+//   
+//   
+//   protected function updateProductInfo($request,$imageUrl)
+//    {
+//        
+//        $productById->productName=$request->productName;
+//        $productById->categoryId=$request->categoryId;
+//        $productById->manufacturerId=$request->manufacturerId;
+//        $productById->productPrice=$request->productPrice;
+//        $productById->productQuantity=$request->productQuantity;
+//        $productById->productShortDescription=$request->productShortDescription;
+//        $productById->productLongDescription=$request->productLongDescription;
+//        $productById->productImage=$imageUrl;
+//        $productById->publicationStatus=$request->publicationStatus;
+//        $productById->save();
+//    }
 }

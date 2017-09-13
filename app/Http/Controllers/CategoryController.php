@@ -70,7 +70,7 @@ class CategoryController extends Controller
     public function deleteCategory($id)
     {
         Category::find($id)->delete();
-        return redirect('/category/manage')->with('message','Category delete successfully')->with('message','Category delete successfully');
+        return redirect('/category/manage')->with('message','Category delete successfully');
         
     }
 }

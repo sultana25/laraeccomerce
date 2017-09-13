@@ -13,7 +13,7 @@
             <label for="inputEmail3" class="col-sm-2 control-label">Manufacturer Name</label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" name="manufacturerName" value="{{$manufacturerById->name}}">
-                <input type="hidden" class="form-control" name="manufacturerId" value="{{$manufacturerById->id}}"}}>
+                <input type="hidden" class="form-control" name="manufacturerId" value="{{$manufacturerById->id}}">
                 <span class="text-danger">{{$errors->has('manufacturerName')?$errors->first('manufacturerName'):''}}</span>
             </div>
         </div>
