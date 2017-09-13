@@ -18,7 +18,7 @@
 					<li class="active menu__item menu__item--current"><a class="menu__link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a></li>
                     @foreach($publishedCategories as $publishedCategory)
 					<li class="dropdown menu__item">
-						<a href="{{url('/category/'.$publishedCategory->id)}} "class="dropdown-toggle menu__link">{{$publishedCategory->categoryName}} <span class="caret"></span></a>
+						<a href="{{url('/category-view/'.$publishedCategory->id)}} "class="dropdown-toggle menu__link">{{$publishedCategory->categoryName}} <span class="caret"></span></a>
 							
 					</li>
 					@endforeach

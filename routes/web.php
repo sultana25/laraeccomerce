@@ -12,7 +12,7 @@
 */
 
 Route::get('/','WelcomeController@index');
-Route::get('/category/{id}','WelcomeController@category');
+Route::get('/category-view/{id}','WelcomeController@category');
 Route::get('/product-details','WelcomeController@productDetails');
 Route::get('/contact','WelcomeController@contact');
 
@@ -20,7 +20,11 @@ Auth::routes();
 
 Route::get('/dashboard', 'HomeController@index')->name('home');
 
-//category info
+
+
+
+Route::group(['middleware'=>'AuthenticateMiddleware'],function(){
+   //category info
 
 Route::get('/category/add','CategoryController@createCategory');
 Route::post('/category/save','CategoryController@storeCategory');
@@ -46,6 +50,5 @@ Route::get('/product/manage','ProductController@manageProduct');
 Route::get('/product/view/{id}','ProductController@viewProduct');
 Route::get('/product/edit/{id}','ProductController@editProduct');
 Route::post('/product/update','ProductController@updateProduct');
-Route::get('/product/delete/{id}','ProductController@deleteProduct');
-
-
+Route::get('/product/delete/{id}','ProductController@deleteProduct'); 
+});
